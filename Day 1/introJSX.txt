@@ -1,0 +1,24 @@
+# JSX là gì?
+- Cú pháp mở rộng của JS, được sử dụng với React, code trông giống với HTML
+- JSX không phải JS hợp lệ, trình duyệt web không đọc được nó
+- Nếu một tệp JS chứa mã JSX, tệp đó phải được biên dịch -> trước khi tệp đến trình duyệt web, compiler JSX sẽ dịch bất kỳ code JSX nào thành JS thông thường
+
+# Ví dụ phần tử JSX:
+    <h1>Hello World</h1>
+-> Giống hệt HTML, tuy nhiên phàn tử này nằm trong tệp JS thay vì tệp HTML
+
+# Các phần tử JSX và môi trường xung quanh
+- Các phần tử JSX được coi là biểu thức trong JS, có thể được sử dụng ở bất kì đâu nơi mà biểu thức JS có thể sử dụng
+-> 1 phần tử JSX có thể lưu trong một biến, truyền vào một hàm, lưu trữ trong một object hoặc array...
+- Ví dụ về phần tử JSX được lưu trong một biến:
+    const navBar = <nav>I am a nav bar</nav>
+
+- Ví dụ phần tử JSX được lưu trữ trong một đối tượng:
+    const myTeam = {
+        center: <li>Benzo Walli</li>
+        powerForward: <li>Rasha Koa</li>
+        smallForward: <li>Tayshaun Dasmoto</li>
+        shootingGuard: <li>Colmar Cumberbatch</li>
+        pointGuard: <li>Femi Billon</li>
+    };
+
