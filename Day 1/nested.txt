@@ -1,0 +1,24 @@
+# JSX lồng nhau:
+- Có thể lồng các phần tử JSX vào bên trong các phần tử JSX khác, giống HTML
+- Ví dụ:
+    <a href='https://www.example.com'>
+        <h1>
+            Click me!
+        </h1>
+    </a>
+- Nếu một biểu thức JSX chiếm nhiều hơn một dòng, cần đống gói biểu thức JSX nhiều dòng đó trong dấu ngoặc đơn
+    (
+        <a href='https://www.example.com'>
+            <h1>
+                    Click me!
+            </h1>
+        </a>
+    )
+- Biểu thức JSX lồng nhau có thể được lưu dưới dạng biến, truyền vào hàm,... giống như biểu thức JSX không lồng nhau
+    const theExample = (
+        <a href='https://www.example.com'>
+            <h1>
+                Click me!
+            </h1>
+        </a>
+    );
