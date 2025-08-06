@@ -1,0 +1,20 @@
+# The Virtual DOM:
+- 1 điều đặc biệt về phương thức render() là nó chỉ cập nhật các phần tử DOM có sự thay đổi
+- Tức là nếu render 2 lần cùng 1 thứ (không thay đổi) thì lần render thứ 2 sẽ không làm gì
+- Ví dụ:
+    const hello = <h1>Hello world</h1>;
+
+    // This will add "Hello world" to the screen:
+    root.render(hello, document.getElementById('app'));
+
+    // This won't do anything at all:
+    root.render(hello, document.getElementById('app'));
+=> Điều này rất quan trọng, làm nên sự thành công của React
+Điều này được thực hiện bằng cách sử dụng DOM ảo của React
+
+# Cách hoạt động của DOM ảo:
+- Nó là một biểu diễn của DOM thật, nhưng nhanh hơn nhiều. Mỗi đối tượng DOM thực sẽ có một đối tượng DOM ảo tương ứng
+- Khi render một phần tử JSX, mọi đối tượng DOM ảo đều được cập nhật
+- Sau đó so sánh với "ảnh chụp nhanh" DOM ảo ngay trước khi cập nhật để "phân biệt" những đối tượng DOM ảo nào đã thay đổi
+- React sẽ chỉ cập nhật những đối tượng đó trên DOM thật
+=> Giúp tối ưu hiệu suất
