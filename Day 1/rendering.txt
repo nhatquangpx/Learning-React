@@ -1,0 +1,38 @@
+# Kết xuất JSX (rendering):
+- Việc hiển thị một biểu thức JSX nghĩa là làm cho biểu thức đó xuất hiện trên màn hình
+- React dựa vào 2 điều để hiển thị: nội dung nào sẽ hiển thị và vị trí đặt nội dung
+- Ví dụ:
+    import React from 'react';
+    import { createRoot } from 'react-dom/client';
+
+    const container = document.getElementById('app');
+    const root = createRoot(container);
+    root.render(<h1>Hello world</h1>);
+- Giải thích:
+    + const container = document.getElementById('app')
+    Sử dụng đối tượng document đại diện cho trang web của chúng ta 
+    Sử dụng phương thức getElementById() để lấy phần tử đại diện cho phần tử HTML có id='app'
+    Lưu trữ phần tử trong container
+    + const root = createRoot(container)
+    Sử dụng createRoot() từ thư viện react-dom/client, tạo React root từ container và lưu nó trong biến root
+    Biến root có thể được sử dụng để render biểu thức JSX
+    Đây là phần "vị trí đặt nội dung" của React rendering
+    + root.render(<h1>Hello world</h1>)
+    Sử dụng phương thức render() của root để render nội dung được truyền vào dưới dạng đối số
+    Ở đây truyền vào phần tử h1, hiển thị Hello World
+    Đây là phần "nội dung nào sẽ hiển thị" của React rendering
+
+# Truyền biến vào render():
+- Đối số truyền vào render() khồn nhất thiết phải là JSX, nhưng nó phải được đánh giá là một biểu thức JSX
+- Đối số cũng có thể là một biến, miễn là biến đó được đánh giá như một biểu thức JSX
+- Ví dụ:
+    const toDoList = (
+        <ol>
+            <li>Learn React</li>
+            <li>Become a developer</li>
+        </ol>
+    );
+
+    const container = document.getElementById('app');
+    const root = createRoot(container);
+    root.render(toDoList);

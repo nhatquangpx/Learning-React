@@ -1,0 +1,40 @@
+# JSX lồng nhau:
+- Có thể lồng các phần tử JSX vào bên trong các phần tử JSX khác, giống HTML
+- Ví dụ:
+    <a href='https://www.example.com'>
+        <h1>
+            Click me!
+        </h1>
+    </a>
+- Nếu một biểu thức JSX chiếm nhiều hơn một dòng, cần đống gói biểu thức JSX nhiều dòng đó trong dấu ngoặc đơn
+    (
+        <a href='https://www.example.com'>
+            <h1>
+                    Click me!
+            </h1>
+        </a>
+    )
+- Biểu thức JSX lồng nhau có thể được lưu dưới dạng biến, truyền vào hàm,... giống như biểu thức JSX không lồng nhau
+    const theExample = (
+        <a href='https://www.example.com'>
+            <h1>
+                Click me!
+            </h1>
+        </a>
+    );
+
+# Quy tắc: biểu thức JSX chỉ có đúng một phần tử ngoài cùng:
+- Code sau sẽ hoạt động bình thường do có duy nhất <div> bọc ở ngoài:
+    const paragraphs = (
+    <div id="i-am-the-outermost-element">
+        <p>I am a paragraph.</p>
+        <p>I, too, am a paragraph.</p>
+    </div>
+    );
+- Code sau không hoạt động:
+    const paragraphs = (
+        <p>I am a paragraph.</p> 
+        <p>I, too, am a paragraph.</p>
+    );
+-> Do có 2 phần tử <p>
+=> Giải pháp: Bọc biểu thức JSX trong một phần tử <div>

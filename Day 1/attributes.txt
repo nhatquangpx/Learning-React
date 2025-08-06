@@ -1,0 +1,9 @@
+# Thuộc tính trong JSX:
+- Phần tử JSX có thể có thuộc tính, giống như phần tử HTML cũng có attributes
+- Thuộc tính JSX được viết bằng cú pháp giống HTML: tên, theo sau là dấu bằng và sau cùng là giá trị. Giá trị phải đặt trong dấu ngoặc kép
+    my-attribute-name="my-attribute-value"
+- Ví dụ:
+    <a href='http://www.example.com'>Welcome to the Web</a>;
+    const title = <h1 id='title'>Introduction to React.js: Part I</h1>;
+- Một phần tử JSX có thể có nhiều thuộc tính giống như trong HTML:
+    const panda = <img src='panda.jpg' alt='panda' width='500px' height='500px'>;
