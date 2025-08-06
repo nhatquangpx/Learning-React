@@ -22,3 +22,19 @@
             </h1>
         </a>
     );
+
+# Quy tắc: biểu thức JSX chỉ có đúng một phần tử ngoài cùng:
+- Code sau sẽ hoạt động bình thường do có duy nhất <div> bọc ở ngoài:
+    const paragraphs = (
+    <div id="i-am-the-outermost-element">
+        <p>I am a paragraph.</p>
+        <p>I, too, am a paragraph.</p>
+    </div>
+    );
+- Code sau không hoạt động:
+    const paragraphs = (
+        <p>I am a paragraph.</p> 
+        <p>I, too, am a paragraph.</p>
+    );
+-> Do có 2 phần tử <p>
+=> Giải pháp: Bọc biểu thức JSX trong một phần tử <div>
