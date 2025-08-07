@@ -1,0 +1,7 @@
+# Trong HTML, class được sử dụng làm tên thuộc tính:
+    <h1 class="big">Title</h1>
+# Trong JSX, không thể sử dụng từ class, mà phải sử dụng className để thay thế:
+    <h1 className="big">Title</h1>
+
+-> Lý do: JSX được dịch sang JS và class là một danh từ riêng trong JS
+Khi JSX được hiển thị, các thuộc tính JSX className sẽ tự động được hiển thị dưới dạng thuộc tính class
