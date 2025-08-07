@@ -1,0 +1,13 @@
+# Một lỗi phổ biến trong JSX là self-closing tags (thẻ tự đóng)
+- Hầu hết phần tử HTML sử dụng 2 thẻ: thẻ mở (<div>) và thẻ đóng (</div>)
+- Một số phần tử HTML như <img> <input> chỉ sử dụng 1 thẻ => thẻ tự đóng
+
+# Khi viết thẻ tự đóng trong HTML, có thể tùy chọn thêm dấu '/' trước dấu ngoặc nhọn đóng >
+    // Fine in HTML with a slash:
+    <br />
+
+    // Also fine, without the slash:
+    <br>
+
+# Tuy nhiên, trong JSX, bắt buộc phải thêm '/'
+
