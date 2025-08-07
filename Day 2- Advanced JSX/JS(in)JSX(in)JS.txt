@@ -1,0 +1,6 @@
+# Nếu như muốn tránh việc đọc code như JSX, cần sử dụng dấu ngoặc nhọn để đánh dấu rằng: Đây là code JS chứ không phải JSX
+- Ví dụ:
+        root.render(<h1>2 + 3</h1>);
+        => Màn hình hiển thị 2 + 3
+        root.render(<h1>{2 + 3}</h1>);
+        => Màn hình hiển thị 5
