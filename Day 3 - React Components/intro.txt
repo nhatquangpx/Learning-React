@@ -1,0 +1,15 @@
+# Ứng dụng react tạo ra bơi các components (các thành phần):
+- 1 component là 1 đoạn mã nhỏ, có thể tái sử dụng, đảm nhiệm 1 nhiệm vụ duy nhất
+Nhiệm vụ đó thường là render một số HTML và render lại khi dữ liệu thay đổi
+- Ví dụ: đoạn mã sau sẽ tạo và hiển thị một component mới
+    import React from 'react';
+    import ReactDOM from 'react-dom/client';
+
+    function MyComponent() {
+    return <h1>Hello world</h1>;
+    }
+
+    ReactDOM.createRoot(
+    document.getElementById('app')
+    ).render(<MyComponent />);
+
