@@ -1,0 +1,13 @@
+# Các phần tử JSX có trình lắng nghe sự kiện (event listeners), giống như các phần tử HTML
+- Làm việc trong React có nghĩa là liên tục làm việc với event listeners
+- Tạo trình lắng nghe sự kiện bằng cách gán cho phần tử JSX một thuộc tính đặc biệt
+- Ví dụ:
+    <img onClick={clickAlert} />
+- Tên của thuộc tính event listener có dạng: on + sự kiện lắng nghe. Các tên này được React quy định hỗ trợ
+- Giá trị của thuộc tính này phải là một hàm, ở ví dụ trên "clickAlert" là một hàm hợp lệ được định nghĩa ở nơi khác:
+    function clickAlert() {
+        alert('You clicked this image!');
+    }
+
+- Lưu ý: Trong HTML, tên event listeners được viết hoàn toàn bằng chữ thường, ví dụ: onmouseover, onclick
+Trong JSX, tên event listeners viết bằng camelCase
