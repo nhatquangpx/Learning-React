@@ -1,0 +1,13 @@
+# Dùng toán tử && để viết câu điều kiện trong React:
+- Toán tử && phù hợp nhất với các câ điều kiện đôi khi sẽ thực hiện một hành động nhưng đôi khi lại không làm gì cả
+- Ví dụ:
+    const tasty = (
+    <ul>
+        <li>Applesauce</li>
+        { !baby && <li>Pizza</li> }
+        { age > 15 && <li>Brussels Sprouts</li> }
+        { age > 20 && <li>Oysters</li> }
+        { age > 25 && <li>Grappa</li> }
+    </ul>
+    );
+- Nếu biểu thức bên trái && đúng thì JSX bên phải sẽ được hiển thị, ngược lại thì không hiển thị

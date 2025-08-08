@@ -1,0 +1,25 @@
+# Tạo danh sách các phần tử JSX, dùng .map() là hiệu quả nhất
+- Ví dụ:
+    const strings = ['Home', 'Shop', 'About Me'];
+
+    const listItems = strings.map(string => <li>{string}</li>);
+
+    <ul>{listItems}</ul>
+-> Trong ví dụ trên, gọi map() của strings và lệnh này trả về một mảng <li> mới
+Dòng cuối, listItem được coi là một mảng vì nó là giá trị trả về của map(), tuy không cần thiết phải làm như vậy nhưng nó có khả năng làm vậy
+- Ví dụ:
+// This is fine in JSX, not in an explicit array:
+<ul>
+  <li>item 1</li>
+  <li>item 2</li>
+  <li>item 3</li>
+</ul>
+
+// This is also fine!
+const liArray = [
+  <li>item 1</li>, 
+  <li>item 2</li>, 
+  <li>item 3</li>
+];
+
+<ul>{liArray}</ul>
