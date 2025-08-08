@@ -1,0 +1,11 @@
+# Có cách gọn hơn để viết điều kiện trong JSX: Toán tử 3 ngôi
+- Toán tử 3 ngôi hoạt động theo cùng 1 cách như trong JS thông thường. Tuy nhiên nó xuất hiện khá thường xuyên trong React
+- Cú pháp: x ? y : z
+    + x true -> trả về y
+    + x false -> trả về z
+- Ví dụ: 
+    const headline = (
+    <h1>
+        { age >= drinkingAge ? 'Buy Drink' : 'Do Teen Stuff' }
+    </h1>
+    );
