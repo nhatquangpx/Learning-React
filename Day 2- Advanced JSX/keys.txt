@@ -1,0 +1,9 @@
+# Khi tạo danh sách trong JSX, thỉnh thoảng cũng cần keys
+- key là 1 thuộc tính JSX, giá trị của key phải là giá trị duy nhất tương tự id 
+- key không hiển thị. React sử dụng chúng để theo dõi nội bộ danh sách. Nếu không sử dụng key, React có thể vô tình xáo trộn các mục trong danh sách theo thứ tự sai
+- Không phải tất cả danh sách đều cần có keys. 1 danh sách cần có keys nếu 1 trong 2 điều sau thỏa mãn:
+    + Các mục danh sách có bộ nhớ từ lần render này sang lần render khác.
+    Ví dụ: Khi render 1 danh sách việc cần làm, mỗi mục phải "ghi nhớ" xem nó đã được chọn hay chưa
+    + Thứ tự danh sách có thể bị xáo trộn
+    Ví dụ: Danh sách kết quả tìm kiếm bị xáo trộn từ lần hiển thị này sang lần hiển thị khác
+- Nếu cả 2 điều kiện này đều không thỏa mãn, thì không cần dùng keys. Tuy nhiên nếu không chắc chắn thì có dùng cũng khôm sao
