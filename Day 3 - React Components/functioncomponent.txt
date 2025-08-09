@@ -1,0 +1,40 @@
+# Xem các component như 1 thành phần nhỏ cấu thành ỉnterface
+- Khi kết hợp lại, chúng sẽ tạo nên 1 ứng dụng React
+- Có thể sử dụng các hàm JS để định nghĩa 1 React component mới -> function component
+- Trước đây, các thành phần React được định nghĩa bằng các class JS. Từ khi Hook ra đời, các function component đã trở thành tiêu chuẩn trong các ứng dụng React hiện đại
+- Sau khi định nghĩa function component, ta có thể sử dụng nó để tạo nhiều instances tùy thích
+- Ví dụ:
+    import React from 'react';
+
+    function MyComponent() {
+        return <h1>Hello, I'm a functional React Component!</h1>;
+    }
+
+    export default MyComponent;
+
+# Đặt tên functional component:
+- Chữ cái đầu tiên của funtion phải viết hoa, tạo theo quy tắc PascalCase 
+-> Đó là do cách các thẻ JSX biên dịch, viết hoa để đánh dấu rằng đây là thành phần React thay vì thành phần HTML
+
+# Return trong functional component:
+- Hàm được tạo nhằm sản xuất code JSX được sử dụng để hiển thị sth ra màn hình. Vì vậy khi định nghĩa functional component, bắt buộc phải return
+- Tất nhiên vẫn chưa thể hiển thị trên hình bởi chúng ta mới chỉ định nghĩa component
+
+# Importing và Exporting React Components:
+- Vì component có thể tái sử dụng nên ta sẽ tách riêng thành từng component nhỏ riêng biệt vào các file riêng biệt và export chúng để có thể sử dụng ở những chỗ cần thiết
+- Để export, thêm tiền tố export và chỉ định xem đó là xuất default hay có tên
+- Để sử dụng chúng ở các file khácm cần import chúng bằng tên mình vừa export
+
+# Sử dụng và render 1 component:
+- Gọi phương thức createRoot để tạo một container gốc để hiển thị nội dung. Các ứng dụng React thường có một nút DOM gốc duy nhất và mọi thứ bên trong nó được quản lí bằng React DOM
+- Chúng ta cung cấp createRoot một phần tử DOM để render và React sẽ tiếp quản việc quản lí DOM bên trong phần tử đó
+- Ví dụ: 
+    ReactDOM.createRoot(document.getElementById('app'));
+    + document.getElementById('app') trả về một phần tử DOM từ index.HTML
+    + .createRoot() nhận phần tử DOM làm đối số đầu tiên và tạo gốc cho Nó
+    + .createRoot() trả về một tham chiếu đến vùng chứa gốc mà ta có thể gọi các thức như .render()
+- Sau khi root được tạo, gọi render() trên root được trả về và hiển thị thành phần React:
+    ReactDOM.createRoot(document.getElementById('app')).render(<MyComponent />);
+- Từ đây, React sẽ hiển thị <MyComponent /> ở thư mục gốc và hiển thị trên màn hình
+- Trong 1 ứng dụng React, chỉ cần thực hiện việc này 1 lần. Sau khi thiết lập xong, React sẽ quản lí DOM của ứng dụng và mọi cập nhật cho UI đều được xử lí hiệu quả
+Việc thêm các thành phần khác nền được thực hiện trong tệp cao nhất là App.js (index.js là điểm vào)
