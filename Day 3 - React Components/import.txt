@@ -1,0 +1,9 @@
+# Thư viện đầu tiên cần import vào là React, được lấy từ package react
+    import React from 'react'
+- Nó sẽ tạo một object React, chứa các method cần thiết để có thể sử dụng thư viện React
+
+# Thư viện thứ 2 cần import là ReactDOM, lấy từ package react-dom/client
+    import ReactDOM from 'react-dom/client'
+- Các phương thức từ react-dom tương tác với DOM 
+- Các phương thức import từ react không hề liên quan đến DOM, chúng không tương tác với bất cứ thứ gì không phải là một phần của React 
+- DOM được sử dụng trong các ứng dụng React nhưng không phải 1 phần của React
