@@ -1,0 +1,17 @@
+# EventListener và EventHandlers trong Component:
+- Funtion components có thể chứa event handlers. Với event handlers, ta có thể chạy một số code phản hồi các tương tác với giao diện, ví dụ nhấp chuột
+- Ví dụ:
+import React from 'react';
+
+function SubmitButton() {
+  function handleClick() {
+    alert('Submission Successful.');
+  }
+  return <button onClick={handleClick}>Submit</button>;
+}
+
+export default SubmitButton;
+- Trong ví dụ trên, event handler là handleClick, được truyền dưới dạng prop cho phần tử JSX <button>
+- Hàm event handler được định nghĩa bên trong thân hàm chính, bắt đầu bằng handle + sự kiện xử lí
+- Hàm được truyền vào không có dấu ngoặc đơn (handleClick()) vì nếu truyền như vậy, hàm sẽ được kích hoạt ngay lập tức 
+Còn truyền như trên ví dụ là vì nó sẽ chỉ nên được gọi sau khi sự kiện đã xảy ra
