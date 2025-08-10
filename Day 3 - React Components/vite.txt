@@ -1,0 +1,76 @@
+# Sử dụng Vite để dễ dàng tạo ứng dụng React:
+- Trước đây sủ dụng create-react-app nhưng giờ nhóm React đã ngừng hỗ trơ công cụ này
+-> Sử dụng Vỉte, giải pháp nhẹ không cần framework
+
+# Chuẩn bị:
+- Cài npm, kiểm tra xem đã cài chưa bằng cách chạy terminal: node -v 
+- Setup ứng dụng Boilerplate:
+    + Để tạo 1 dự án Vite mới, chạy: npm create vite@latest
+    + Sau khi chạy lệnh, hãy làm theo lời nhắc tương tác:
+        nhập tên dự án của bạn (ví dụ: my-react-app)
+        chọn Reactlàm khuôn khổ của bạn
+        chọn biến thể bạn thích (JavaScript hoặc TypeScript)
+- Sau khi hoàn tất, sẽ nhận được bán tóm tắt về project:
+> npx
+> create-vite
+
+│
+◇  Project name:
+│  my-react-app
+│
+◇  Select a framework:
+│  React
+│
+◇  Select a variant:
+│  JavaScript
+│
+◇  Scaffolding project in /Users/codecademy/Desktop/vite/my-react-app...
+│
+└  Done. Now run:
+
+ cd my-react-app
+ npm install
+ npm run dev
+
+# Cấu trúc ứng dụng React:
+└── 📁my-react-app
+    ├── 📁public
+    │   └── vite.svg
+    ├── 📁src
+    │   ├── App.css
+    │   ├── App.jsx
+    │   ├── 📁assets
+    │   │   └── react.svg
+    │   ├── index.css
+    │   └── main.jsx
+    ├── .gitignore
+    ├── eslint.config.js
+    ├── index.html
+    ├── package-lock.json
+    ├── package.json
+    ├── README.md
+    └── vite.config.js
+
+- Thư mục chính:
+    + /node_modules: Chứa dependency và sub-dependencies được chỉ định trong tệp package.json. Được tự động thêm vào .gitignore vì không cần phải commit vào repo
+    + /public: Chứa tài nguyên tĩnh phục vụ trực tiếp mà không cần Vite xử lí. Được sao chép vào build trong quá trình produce, gồm:
+        . vite.svg: logo Vite, có thể thay thế
+    + /src: Chứa code React chính
+        . /assets: thư mục lưu trữ ảnh
+        . App.jsx: React component chính của ứng dụng
+        . App.css: Css cho component App
+        . main.jsx: điểm vào cho ứng dụng React (giống index.js hoặc index.jsx trong các setup React khác)
+        . index.css: global css cho toàn ứng dụng
+
+- Tệp tin quan trọng:
+    + index.html: Nằm trong thư mục gốc, tệp HTML này đóng vai trò là điểm vào cho ứng dụng. Vite sẽ chèn JS của dev viết vào đó trong quá trình build. Có thể chỉnh sửa trực tiếp tệp này để them thẻ meta, thay đổi tiêu đề trang hoặc thêm các tập lệnh, kiểu bổ sung
+    + package.json: Nêu rõ các cài đặt cho ứng dụng, gồm:
+        . dependencies cần thiết
+        . script cho development, building và preview ứng dụng: dev (khởi chạy server dev), build (tạo sản phẩm sẵn sàng), preview (tạo bản local phục vụ test)
+        . các siêu dữ liệu khác
+    + eslint.config.js: Cấu hình ESlint cho project, giúp phát hiện lỗi và áp dụng đúng style code
+    + .gitignore: Tệp bỏ qua khi commit
+
+# Khởi động server development React app:
+- Chạy npm run dev, mặc định server chạy ở URL: http://localhost:5173/
+URL trên có thể thay thế 
