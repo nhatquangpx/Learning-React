@@ -1,0 +1,10 @@
+# Đặt logic vào trong Function Component
+- Ngoài return, trong thân hàm có thể chứa các phép toán đơn giản cần xảy ra trước khi trả về phần tử JSX
+- Ví dụ:
+function RandomNumber() {
+  //First, some logic that must happen before returning
+  const n = Math.floor(Math.random() * 10 + 1);
+  //Next, a return statement using that logic: 
+  return <h1>{n}</h1>
+}
+
