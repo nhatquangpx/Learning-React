@@ -1,0 +1,13 @@
+# Một component truyền thông tin cho một component khác
+- Thông tin được truyền từ component này sang component khác được gọi là props
+- Sử dụng props để tùy chỉnh đầu ra của từng thành phần tùy thuộc vào thông tin được truyền vào
+
+# Truy cập props của component
+- Mỗi component đều có props
+- props là một object, chứa thông tin về component đó 
+- Ví dụ một thẻ HTML, truyền giá trị thuộc tính type, value:
+    <button type="submit" value="Submit"> Submit </button> 
+-> props cũng hoạt động tương tự như vậy
+- Props có cùng mục đích như đối số với các hàm
+- Để truy cập props của một component, có thể tham chiếu đến đối tượng đó bằng cú pháp props + tên thuộc tính
+- Ví dụ: props.name
