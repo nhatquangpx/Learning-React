@@ -1,0 +1,29 @@
+# Các component có khả năng tương tác với nhau để hỗ trợ các tính năng cần thiết
+- Ví dụ:
+function PurchaseButton() {
+  return <button onClick={()=>{alert("Purchase Complete")}}>Purchase</button>
+}
+
+function ItemBox() {
+  return (
+    <div>
+      <h1>50% Sale</h1>
+      <h2>Item: Small Shirt</h2>
+      <PurchaseButton />
+    </div>
+  );
+}
+- Trong ví dụ, 2 component tương tác với nhau thông qua việc ItemBox trả về một instance của PurchaseButton
+-> Một component có thể tham chiếu đến một component khác
+
+# Áp dụng một component khác trong một hàm render
+- Ví dụ:
+import Button from './Button'
+
+function App() {
+  return <Button />;
+}
+
+export default App;
+
+- Ta có thể import các component từ file khác vào, thông qua việc export các component đó 
