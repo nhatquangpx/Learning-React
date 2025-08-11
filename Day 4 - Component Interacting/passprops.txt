@@ -1,0 +1,9 @@
+# Truyền props cho một component
+- Để tận dụng props, cần truyền thông tin cho 1 component
+- Để truyền thông tin cho 1 component, cần đặt tên cho thông tin cần truyền 
+- Ví dụ: 
+    <SloganDisplay message="We're great!" />
+-> Sử dụng message để đặt tên
+- Nếu muốn truyền thông tin không phải string, đặt thông tin trong cặp ngoặc nhọn
+- Ví dụ:
+    <Greeting myInfo={["Astronaut", "Narek", "43"]} />
