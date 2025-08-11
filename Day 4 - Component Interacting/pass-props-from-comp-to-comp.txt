@@ -1,0 +1,11 @@
+# Truyền props từ component này sang component khác
+- Đây là cách sử dụng props phổ biến nhất
+- Props trong React di chuyển theo hướng 1 chiều, từ trên xuống dưới, từ cha đến con 
+- Ví dụ: 
+function App() {
+    return <Product name="Apple Watch" price = {399} rating = "4.5/5.0" />;
+}
+-> Trong ví dụ, App là phần tử cha và Product là phần tử con
+App truyền 3 thuộc tính cho Product, sau đó có thể đọc được bên trong phần tử con
+Các prop truyền xuống là bất biến, không thể thay đổi
+Nếu 1 component muốn có một giá trị mới cho prop của mình, cần dựa vào component cha truyền giá trị mới
