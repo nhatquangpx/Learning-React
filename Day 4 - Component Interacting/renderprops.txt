@@ -1,0 +1,10 @@
+# Props cho phép tùy chỉnh component bằng cách truyền thông tin cho nó
+- Ví dụ: 
+function Button(props) {
+  return <button>{props.displayText}</button>;
+}
+-> props được chấp nhận như 1 tham số và các giá trị được truy cập bằng cú pháp props.propertyName
+- Vì props là một object nên cũng có thể sử dụng cú pháp phân rã sau:
+function Button({displayText}) {
+  return <button>{displayText}</button>;
+}
