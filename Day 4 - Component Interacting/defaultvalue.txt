@@ -1,0 +1,24 @@
+# Cung cấp giá trị mặc định cho Props
+- Có 3 phương pháp chỉ định giá trị mặc định cho prop, nếu như prop không được truyền giá trị nào
+- Cách 1: thêm thuộc tính tĩnh defaultProps vào component 
+Ví dụ: 
+function Example(props) {
+  return <h1>{props.text}</h1>
+}
+
+Example.defaultProps = {
+  text: 'This is default text',
+};
+- Cách 2: Chỉ định giá trị mặc định trực tiếp trong định nghĩa hàm
+Ví dụ:
+function Example({text='This is default text'}) {
+   return <h1>{text}</h1>
+}
+- Cách 3: Đặt giá trị mặc định trong thân hàm
+Ví dụ: 
+function Example(props) {
+  const {text = 'This is default text'} = props;
+  return <h1>{text}</h1>
+}
+-> Nếu <Example />không nhận được bất kỳ văn bản nào, nó sẽ hiển thị "This is default text".
+Nếu <Example /> có một đoạn văn bản nào đó được truyền vào, nó sẽ hiển thị đoạn văn bản được truyền vào đó.
