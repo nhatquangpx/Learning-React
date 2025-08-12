@@ -1,0 +1,34 @@
+# Mỗi đối tượng props của component đều có một thuộc tính tên là children
+- props.children sẽ trả về mọi thứ nằm giữa thẻ JSX mở và đóng của component
+- Trước đó, toàn học thẻ tự đóng <MyComponent />, tuy nhiên hoàn toàn có thể viết cặp thẻ mở đóng <MyComponent></MyComponent>
+Khi đó props.children sẽ trả về mọi thứ giữa hai thẻ <MyComponent> và </MyComponent>
+- props.children giúp tách component bên ngoài khỏi nội dung, giúp linh hoạt và tái sử dụng
+- Nếu một component có nhiêu hơn một phần tử con giữa các thẻ JSX, thì hàm props.children sẽ trả về các phần tử con đó trong một mảng. Tuy nhiên nếu chỉ có 1 phần tử thì trả về phần tử con duy nhất, không được gói trong mảng
+- Ví dụ:
+import React from 'react';
+import LilButton  from './LilButton';
+
+function BigButton(props) {
+  console.log(props.children);
+  return <button>I am a Big Button.</button>;
+}
+
+export default BigButton;
+
+// Example 1
+<BigButton>
+  I am a child of BigButton.
+</BigButton>
+
+
+// Example 2
+<BigButton>
+  <LilButton />
+</BigButton>
+
+
+// Example 3
+<BigButton />
+-> Trong Ví dụ 1, <BigButton> 's props.children sẽ bằng văn bản “I am a child of BigButton”
+Trong Ví dụ 2, <BigButton> 's props.children sẽ bằng một component <LilButton />
+Trong Ví dụ 3, <BigButton> 's props.children sẽ bằng undefined

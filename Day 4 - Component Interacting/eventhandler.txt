@@ -1,0 +1,60 @@
+# Đặt event handler vào trong function component
+- Ta có thể và thường truyền các hàm như Props, việc truyền các hàm xử lí sự kiện đặc biệt phổ biến
+- Cần phải định nghĩa một hàm event handler trước khi truyền nó đi bất cứ đâu
+- Định nghĩa event handler là một method trong function component
+- Ví dụ:
+import React from 'react';
+import Button from './Button';
+
+function Talker() {
+  function talk() {
+    let speech = '';
+    for (let i = 0; i < 10000; i++) {
+      speech += 'blah ';
+    }
+    alert(speech);
+	}
+  return <Button talk={talk}/>;
+}
+
+export default Talker;
+-> method event handler handleEvent được định nghĩa, sau đó được đính kèm vsò một sự kiện (onClick của thẻ h1)
+
+# Truyền event handler dưới dạng props
+- Truyền hàm event hanlder được định nghĩa trong function component giống như cách truyền bất kỳ dữ liệu nào khác, sử dụng dấu ngoặc nhọn
+- Ví dụ:
+    return <Button talk={talk}/>;
+- prop nên chọn tên nào? -> Không quan trọng, miên là tuân theo quy tắc định danh JS, trong ví dụ trên vì hàm có tên talk() nên cũng có thể sử dụng talk như tên 
+- Giá trị của prop là thông tin muốn truyền, ở đây là truyền phương thức. Chú ý sử dụng dấu ngoặc nhọn để truyền hàm, hàm không có ngoặc đơn vì được xử lí sau khi sự kiện xảy ra 
+
+# Nhận event handler như một prop
+- Ở function component định nghĩa hàm được truyền một hàm event handler đến, cần gán event handler đó cho một thuộc tính đặc biệt của phần tử JSX
+- Tên của thuộc tính đặc biệt đó phải là tên sự kiện, ví dụ onClick, onHover
+- Ví dụ:
+import React from 'react';
+
+function Button(props) {
+  return (
+    <button onClick={props.talk}>
+      Click me!
+    </button>
+  );
+}
+
+export default Button;
+
+# handleEvent, onEvent và props.onEvent
+- Khi truyền một eventHandler dưới dạng prop, cần phải đặt 2 tên. Việc này đều được thực hiện trong component cha, component mà định nghĩa event handler và truyền nó cho component con (Như trong ví dụ trên, component cha là Talker, component con là Button)
+- Tên đầu tiên cần chọn là tên của event hanlder. Như ví dụ, event handler của chúng ta đặt tên là talk 
+- Tên thứ hai cần chọn là tên của prop được sử dụng để truyền event handler. Nó tương tự với tên thuộc tính. Như ví dụ, prop của chúng ta đặt tên là talk
+- 2 tên trên có thể là bất cứ thứ gì ta muốn. Tuy nhiên có quy ước đặt tên thường được sử dụng 
+- Quy ước như sau: Đầu tên dựa vào loại sự kiện mà chúng ta cần xử lí -> Đật tên event handler = handle + tên sự kiện. Ví dụ: handleClick, handleHover
+Thứ hai, tên của prop nên được đặt = on + tên sự kiện. Ví dụ: onClick, onHover
+- CHÚ Ý: onClick có thể gây nhầm lẫn là một event listener thay vì tên của 1 attribute. Tuy nhiên có sự khác biệt, nếu nó nằm trong phần tử JSX giống như HTML, nó là event listener. Còn nếu nó nằm trong phần tử JSX không giống HTML, nó chỉ đơn giản là tên thuộc tính của prop.
+Ví dụ: 
+// In Button.js: The onClick attribute creates an event listener:
+<button onClick={props.onClick}>
+  Click me!
+</button>
+// In Talker.js: The onClick attribute is just a normal attribute name.
+<Button onClick={handleClick} />
