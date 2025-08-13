@@ -1,0 +1,4 @@
+# Tại sao cần sử dụng Hooks?
+- Cho phép chúng ta quản lý trạng thái bên trong các component và xử lý các hiệu ứng phụ sau khi render trực tiếp ttừ các function component
+- Sử dụng Hooks, chúng ta có thể xác định những gì chúng ta muốn hiển thị cho người dùng bằng cách khai báo giao diện người dùng trông như thế nào dựa trên state
+- React cung cấp một số tích hợp sẵn. Ví dụ: useState(), useEffect(), useContext(), useReducer(), useRef()
