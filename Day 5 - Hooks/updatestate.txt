@@ -1,0 +1,29 @@
+# Cập nhật state của function component
+- State Hook - Hook phổ biến nhất để xây dựng React component, là một export được đặt tên từ thư viện React
+- Cú pháp:
+    import React, {useState} from 'react';
+
+# Khi gọi hàm useState(), hàm trả về 1 mảng có 2 giá trị:
+- Trạng thái hiện tại: Giá trị hiện tại của trạng thái này
+- Bộ thiết lập trạng thái (state setter): Một hàm chúng ta có thể sử dụng để cập nhật giá trị của trạng thái này
+- Chúng ta sử dụng 2 giá trị này để theo dõi trạng thái hiện tại của một giá trị dữ liệu hoặc thuộc tính và thay đổi nó khi cần
+- Để trích xuất hai giá trị từ mảng, có thể gán chúng cho các biến cục bộ bằng cách sử dụng destructuring array:
+    const [currentState, setCurrentState] = useState();
+
+# Ví dụ về function component sử dụng State Hook:
+import React, { useState } from "react";
+
+function Toggle() {
+  const [toggle, setToggle] = useState();
+
+  return (
+    <div>
+      <p>The toggle is {toggle}</p>
+      <button onClick={() => setToggle("On")}>On</button>
+      <button onClick={() => setToggle("Off")}>Off</button>
+    </div>
+  );
+}
+-> Để cập nhật giá trị toggle và hiển thị lại thành phần này, chỉ cần gọi setToggle() với giá trị trạng thái tiếp theo làm đối số
+Việc gọi hàm thiết lập trạng thái sẽ báo hiệu cho React rằng thành phần cần render lại, do đó toàn bộ hàm định nghĩa thành phần đó sẽ được gọi lại
+Điều kỳ diệu của useState() là nó cho phép React theo dõi giá trị hiện tại của trạng thái từ lần render này sang lần render tiếp theo
