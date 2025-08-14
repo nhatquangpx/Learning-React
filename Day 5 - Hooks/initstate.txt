@@ -1,0 +1,26 @@
+# Giống như sử dụng State Hook để quản lí một biến có giá trị string, có thể sử dụng State Hook để quản lý giá trị của bất kỳ kiểu dữ liệu nguyên thủy nào, thậm chí tập hợp dữ liệu như arr và object
+- Ví dụ:
+import React, { useState } from 'react';
+
+function ToggleLoading() {
+  const [isLoading, setIsLoading] = useState();
+
+  return (
+    <div>
+      <p>The data is {isLoading ? 'Loading' : 'Not Loading'}</p>
+      <button onClick={() => setIsLoading(true)}>
+        Turn Loading On
+      </button>
+      <button onClick={() => setIsLoading(false)}>
+        Turn Loading Off
+      </button>
+    </div>
+  );
+}
+-> Kiểu boolean
+- Nếu muốn component bắt đầu bằng cách set isLoading = true
+-> Khởi tạo bằng cách truyền giá trị ban đầu làm đối số cho useState():
+    const [isLoading, setIsLoading] = useState(true);
+-> Lần render đầu tiên, đối số trạng thái ban đầu sẽ được sử dụng
+-> Nếu không truyền giá trị khởi tạo, giá trị hiện tại của trạng thái trong lần render đầu tiên sẽ là undefined
+-> Nên khởi tạo trạng thái một cách rõ ràng, nếu không có giá trị cần thiết trong lần render đầu tiên, nên truyền null thay vì để thụ động giá trị undefined
