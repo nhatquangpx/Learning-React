@@ -1,0 +1,25 @@
+# Sử dụng State Setter bên ngoài JSX
+- Ví dụ: Cách quản lý giá trị thay đổi của một chuỗi khi người dùng nhập vào trường nhập văn bản
+import React, { useState } from 'react';
+
+export default function EmailTextInput() {
+  const [email, setEmail] = useState('');
+  const handleChange = (event) => {
+    const updatedEmail = event.target.value;
+    setEmail(updatedEmail);
+  }
+
+  return (
+    <input value={email} onChange={handleChange} />
+  );
+}
+-> Phân tích:
+    + Dùng cấu trúc arr để tạo biến cục bộ email và hàm thiết lập cục bộ setEmail()
+    + email được gán giá trị trạng thái hiện tại tại chỉ mục 0 từ mảng được trả về bởi useState()
+    + setEmail() được gán một tham chiếu đến hàm thiết lập trạng thái tại chỉ mục 1 từ mảng được trả về bởi useState()
+- Thẻ input có một event listener là onChange, gọi một event handler mỗi khi người dùng nhập nội dung nào đó vào phần tử này
+Trong ví dụ trên, event handler được định nghĩa bên trong phần định nghĩa của function component nhưng nằm ngoài JSX
+Có thể đơn giản hóa handleChange như sau:
+    const handleChange = (event) => setEmail(event.target.value);
+hoặc sử dụng cấu trúc destructuring object như sau:
+    const handleChange = ({target}) => setEmail(target.value);
