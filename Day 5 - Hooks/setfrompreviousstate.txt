@@ -1,5 +1,18 @@
 # Đặt từ trạng thái trước đó:
 - Việc cập nhật trạng thái React là bất đồng bộ, có nghĩa là có một số trường hợp code sẽ chạy trước khi trạng thái được cập nhật hoàn tất
 -> Tốt nhất nên cập nhật trạng thái bằng hàm callback, tránh vô tình tạo ra các giá trị lỗi thời
-
-- 
+- Ví dụ:
+import React, { useState } from 'react';
+ 
+export default function Counter() {
+  const [count, setCount] = useState(0);
+ 
+  const increment = () => setCount(prevCount => prevCount + 1);
+ 
+  return (
+    <div>
+      <p>Wow, you've clicked that button: {count} times</p>
+      <button onClick={increment}>Click here!</button>
+    </div>
+  );
+}
