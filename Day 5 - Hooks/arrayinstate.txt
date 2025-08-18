@@ -1,0 +1,42 @@
+# Mảng JS là cách tốt nhất để quản lý và hiển thị list JSX
+- Ví dụ:
+import React, { useState } from 'react';
+
+//Static array of pizza options offered. 
+const options = ['Bell Pepper', 'Sausage', 'Pepperoni', 'Pineapple'];
+
+export default function PersonalPizza() {
+  const [selected, setSelected] = useState([]);
+
+  const toggleTopping = ({target}) => {
+    const clickedTopping = target.value;
+    setSelected((prev) => {
+     // check if clicked topping is already selected
+      if (prev.includes(clickedTopping)) {
+        // filter the clicked topping out of state
+        return prev.filter(t => t !== clickedTopping);
+      } else {
+        // add the clicked topping to our state
+        return [clickedTopping, ...prev];
+      }
+    });
+  };
+
+  return (
+    <div>
+      {options.map(option => (
+        <button value={option} onClick={toggleTopping} key={option}>
+          {selected.includes(option) ? 'Remove ' : 'Add '}
+          {option}
+        </button>
+      ))}
+      <p>Order a {selected.join(', ')} pizza</p>
+    </div>
+  );
+}
+-> Phân tích:
+- Mảng option chứa dữ liệu tĩnh, không thay đổi. Nên định nghĩa các mô hình dữ liệu tĩnh ở ngoài function component vì chúng không cần phải được tạo lại mỗi khi chúng ta render component lại
+Trong JSX chúng tra sử dụng phương thức .map() của JS để render một nút cho mỗi topping thuộc mảng options
+- Mảng selected chứa dữ liệu động, có thể thay đổi, thường dựa trên hành động của người dùng. Ta khởi tạo mảng selected rỗng. Mỗi khi một nút được click, event handler toggleTopping() sẽ được gọi. Lưu ý event handler này sẽ lấy thông tin từ event object để xác định xem topping nào được click
+- Khi update một mảng trong State, ta không đơn giản thêm dữ liệu mới vào mảng cũ, mà thay thế mảng trước đó bằng mảng mới hoàn toàn
+-> Muốn bất kỳ thông tin nào giữ lại từ mảng cũ phải được sao chép rõ ràng sang mảng mới. Đó chính là vai trò của cú pháp spread(...prev)
