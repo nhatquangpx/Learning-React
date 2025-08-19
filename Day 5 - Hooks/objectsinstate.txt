@@ -1,0 +1,45 @@
+# Chúng ta cũng có thể sử dụng state với các object
+- Khi làm việc với tập các biến có liên quan, nên nhóm chúng thành một đối tượng
+- Ví dụ:
+export default function Login() {
+  const [formState, setFormState] = useState({});
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
+    setFormState((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  return (
+    <form>
+      <input
+        value={formState.firstName}
+        onChange={handleChange}
+        name="firstName"
+        type="text"
+      />
+      <input
+        value={formState.password}
+        onChange={handleChange}
+        type="password"
+        name="password"
+      />
+    </form>
+  );
+}
+-> Phân tích:
+- Sử dụng hàm callback state setter để cập nhật state dựa trên giá trị trước đó 
+- Sử dụng cú pháp spread cho object tương tự như array: {...oldObject, newKey: newValue}
+- Sử dụng lại event handler trong nhiều lần input bằng cách sử dụng thuộc tính của thẻ input - name để xác định sự kiện thay đổi đến từ input nào
+
+- Khi cập nhật trạng thái bên trong một function component, không thể sửa đổi cùng 1 object -> Phải sao chép các giá trị từ đối tượng trước đó khi thiết lập giá trị tiếp theo của state
+-> dùng cú pháp spread
+- Bất cứ khi nào input được cập nhật, hàm handleChange() sẽ được gọi. Trong event handler này, sử dụng object destructuring để giải nén thuộc tính target khỏi object event. Tiếp đó sử dụng object destructuring để giải nén các thuộc tính name và value khỏi target 
+- setFormState((prev) => ({ ...prev }))
+Bên trong hàm thiết lập trạng thái, đặt dấu ngoặc nhọn trong dấu ngoặc đơn
+-> Cho JS biết dấu ngoặc nhọn tham chiếu đến một object mới cần trả về. Sử dụng toán tử spread "..." để copy các trường tương ứng từ trước Đó
+Cuối cùng, ghi đè khóa thích hợp bằng giá trị được cập nhật của nó
+
+- [name]: value -> Computed Property Name (tên thuộc tính được tính toán động). Nghĩa là giá trị của biến name sẽ được dùng làm key của object
+Trong 2 thẻ input, tùy vào name là firstName hay password mà tên của name sẽ tương ứng 
