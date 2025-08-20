@@ -1,0 +1,17 @@
+# Dọn dẹp hiệu ứng
+- Một số hiệu ứng yêu cầu dọn dẹp
+- Ví dụ, chúng ta có thể muốn thêm một event listener vào một số phần tử trong DOM, ngoài JSX trong component
+Khi chúng ta thêm event listener vào DOM, điều quan trọng là phải xóa chúng khi chúng ta hoàn tất việc sử dụng chúng để tránh rò rỉ bộ nhớ
+- Ví dụ:
+useEffect(()=>{
+  document.addEventListener('keydown', handleKeyPress);
+  // Specify how to clean up after the effect:
+  return () => {
+    document.removeEventListener('keydown', handleKeyPress);
+  };
+})
+- Nếu effect không trả về hàm dọn dẹp, một event listener mới sẽ được thêm vào đối tượng DOM document mỗi khi component render lại
+-> Gây lỗi, giảm hiệu suất ứng dụng, thậm chí sập
+- Vì effect chạy sau mỗi lần render chứ không phải mỗi lần, React gọi hàm dọn dẹp của chúng ta trước mỗi lần render lại và trước khi hủy gắn kết để dọn dẹp mỗi lần gọi effect
+- Nếu effect trả về một hàm, useEffect() Hook luôn coi đó là một hàm dọn dẹp. React sẽ gọi hàm dọn dẹp này trước khi component render lại hoặc ngắt kết nối
+Vì hàm dọn dẹp này là tùy chọn, ta có trách nhiệm trả về một hàm dọn dẹp từ effect khi code của effect có thể gây rò rì bộ nhớ
