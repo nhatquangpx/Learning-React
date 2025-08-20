@@ -1,0 +1,32 @@
+# Effect Hook yêu cầu component thực hiện một hành động nào đó mỗi khi nó được render hoặc render lại
+- Có thể kết hợp với State để tạo ra những thay đổi động thú vị trên trang web
+- Ví dụ: Muốn cho phép người dùng thay đổi tiêu đề của tab trang web mỗi khi họ nhập. Có thể triển khai bằng Effect Hook như sau:
+import React, { useState, useEffect } from 'react';
+ 
+function PageTitle() {
+  const [name, setName] = useState('');
+ 
+  useEffect(() => {
+    document.title = `Hi, ${name}`;
+  });
+ 
+  return (
+    <div>
+      <p>Use the input field below to rename this page!</p>
+      <input onChange={({target}) => setName(target.value)} value={name} type='text' />
+    </div>
+  );
+}
+-> Phân tích:
+- Đầu tiên cần nhập Effect Hook từ thư viện 'react':
+    import  {useEffect} from 'react'
+- Hàm useEffect không có giá trị trả về vì Effect Hook được sử dụng để gọi một hàm khác
+- Truyền hàm callback, effect để chạy sau khi một component render làm đối số của hàm useEffect()
+- Trong ví dụ, hiệu ứng chạy sau mỗi lần component PageTitle render:
+    () => { document.title = `Hi, ${name}`;}
+Ở đây, gán giá trị của document.title là Hi, ${name}
+- Event listener onChange sẽ kích hoạt component PageTitle render lại mỗi khi người dùng nhập dữ liệu
+Do đó, điều này sẽ kích hoạt useEffect() và thay đổi tiêu đề của tài liệu
+- Lưu ý về cách sử dụng currentState trong effect: Mặc dù effect được gọi sau khi component render, ta vẫn có thể truy cập vào các biến trong phạm vi của function component
+Khi React render component, nó sẽ cập nhật DOM như bình thường, rồi chạy effect sau khi DOM đã được cập nhật
+Điều này xảy ra với mọi lần render, kể cả lần render đầu và lần render cuối cùng
