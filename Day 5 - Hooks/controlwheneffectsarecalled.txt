@@ -1,0 +1,14 @@
+# Kiểm soát khi nào effect được gọi
+- Đôi khi muốn bỏ qua việc gọi effect khi render lại
+- Khi định nghĩa function component, thông thường chỉ chạy effect khi component được mount (render lần đầu), chứ không phải khi component được render lại
+Effect Hook giúp thực hiện việc trên rất dễ dàng
+- Nếu chúng ta chỉ muốn gọi effect sau lần render đầu tiên, chúng ta truyền một mảng rỗng vào useEffect() làm đối số thứ hai. Đối số thứ hai này được gọi là mảng phụ thuộc
+- Mảng phụ thuộc được sử dụng để cho useEffect() biết khi nào gọi hiệu ứng và khi nào bỏ qua. Effect luôn được gọi sau lần render đầu tiên nhưng chỉ được gọi lại nếu có component nào đó trong mảng phụ thuộc thay đổi giá trị giữa các lần render
+- Ví dụ: Sử dụng mảng phụ thuộc rỗng để gọi effect khi 1 component được mount lần đầu và nếu một hàm dọn dẹp được effect trả về, hãy gọi hàm đó khi component được hủy gắn kết
+useEffect(() => {
+  alert("component rendered for the first time");
+  return () => {
+    alert("component is being removed from the DOM");
+  };
+}, []); 
+Nếu không truyền một mảng rỗng làm đối số thứ 2 cho đoạn useEffect trên, alert sẽ được hiển thị trước và sau mỗi lần render component
