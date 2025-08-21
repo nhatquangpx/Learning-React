@@ -1,0 +1,13 @@
+# Tại sao nên sử dụng useEffect?
+- Sử dụng Effect Hook để chạy một số mã JS sau mỗi lần render để:
+    + lấy dữ liệu từ dịch vụ phụ trợ (fetch data từ back-end service)
+    + đăng ký một luồng dữ liệu (subcribe to a stream of data)
+    + quản lý bộ hẹn giờ và khoảng thời gian ( manage timers and intervals)
+    + đọc và thực hiện thay đổi cho DOM ( read from and make changes to the DOM)
+
+- Các component sẽ được render lại nhiều lần trong suốt vòng đời của chúng. Những khoảnh khắc quan trọng này là cơ hội hoàn hảo để thực hiện các hiệu ứng phụ trên
+
+- Có 3 thời điểm quan trọng có thể sử dụng Effect Hook:
+    + Khi component được thêm hoặc mounted (gắn kết) lần đầu tiên vào DOM và hiển thị
+    + Khi state hoặc att thay đổi, khiến component phải render lại
+    + Khi component bị xóa hoặc ngắt kết nối khỏi DOM

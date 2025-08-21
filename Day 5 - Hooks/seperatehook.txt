@@ -1,0 +1,37 @@
+# Hook riêng biệt cho State riêng biệt
+- Mặc dù đôi khi việc lưu trữ dữ liệu liên quan trong một tập hợp dữ liệu, ví dụ như mảng hoặc object, có thể hữu ích
+Nhưng việc tạo các biến trạng thái khác nhau cho dữ liệu thay đổi riêng biệt cũng có thể hữu ích
+- Quản lí dữ liệu động sẽ dễ dàng hơn nhiều khi giữ cho mô hình dữ liệu đơn giản nhất có thể
+- Ví dụ: Có một object duy nhất lưu giữ trạng thái của một môn học ở trường
+function Subject() {
+  const [state, setState] = useState({
+    currentGrade: 'B',
+    classmates: ['Hasan', 'Sam', 'Emma'],
+    classDetails: {topic: 'Math', teacher: 'Ms. Barry', room: 201},
+    exams: [{unit: 1, score: 91}, {unit: 2, score: 88}]
+  })}
+-> Muốn cập nhật trạng thái của đối tượng này sẽ trở nên rất lộn xộn khi phải sao chép giá trị khác không thay đổi
+Ví dụ: Cập nhật điểm một bài kiểm tra, cần event handler như sau:
+setState((prev) => ({
+ ...prev,
+  exams: prev.exams.map((exam) => {
+    if( exam.unit === updatedExam.unit ){
+      return { 
+        ...exam,
+        score: updatedExam.score
+      };
+    } else {
+      return exam;
+    }
+  }),
+}));
+=> Phức tạp, dễ lỗi
+=> Tạo nhiều biến trạng thái:
+function Subject() {
+  const [currentGrade, setGrade] = useState('B');
+  const [classmates, setClassmates] = useState(['Hasan', 'Sam', 'Emma']);
+  const [classDetails, setClassDetails] = useState({topic: 'Math', teacher: 'Ms. Barry', room: 201});
+  const [exams, setExams] = useState([{unit: 1, score: 91}, {unit: 2, score: 88}]);
+  // ...
+}
+
