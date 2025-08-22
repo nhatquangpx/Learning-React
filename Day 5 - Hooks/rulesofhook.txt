@@ -1,0 +1,20 @@
+# Quy tắc của Hook
+- 2 quy tắc chính cần nhớ khi sử dụng Hooks:
+    + Chỉ gọi Hooks ở cấp độ cao nhất
+    + Chỉ gọi Hooks từ các hàm React
+- Khi React xây dựng DOM ảo, thư viện gọi đi gọi lại các hàm định nghĩa các component khi người dùng tương tác với giao diện người dùng
+React theo dõi dữ liệu và các hàm mà chúng ta quản lý bằng Hook dựa trên thứ tự của chúng trong định nghĩa của function component
+=> Chúng ta luôn gọi Hook ở cấp cao nhất, không bao giờ gọi Hook bên trong vòng lặp, điều kiện hoặc các hàm lồng nhau
+- Ví dụ: Thay vì nhầm lẫn đoạn mã React như sau:
+if (userName !== '') {
+  useEffect(() => {
+    localStorage.setItem('savedUserName', userName);
+  });
+}
+Thì ta có thể đạt được mục tiêu tương tự khi gọi như sau:
+useEffect(() => {
+  if (userName !== '') {
+    localStorage.setItem('savedUserName', userName);
+  }
+});
+- Hooks chỉ có thể được sử dụng trong React Functions. Ví dụ useState() và useEffect()
