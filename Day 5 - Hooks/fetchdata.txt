@@ -1,0 +1,17 @@
+# Lấy dữ liệu:
+- Khi xây dựng phần mềm, thường bắt đầu với các hành vi mặc định rồi sau đó sửa đổi để cải thiện hiệu suất
+- Hành vi mặc định của Effect Hook là gọi hàm effect sau mỗi lần render
+- Có thể truyền một mảng rỗng làm đối số thứ hai cho useEffect() nếu chúng ta chỉ muốn effect được gọi sau lần render đầu tiên của component
+- Ngoài ra chúng ta có thể sử dụng mảng phụ thuộc để cấu hình chính xác thời điểm chúng ta muốn effect được gọi
+- Khi effect chịu trách nhiệm lấy dữ liệu từ server, cần đặc biệt chú ý tới thời điểm hiệu ứng được gọi
+- Khi dữ liệu mà các component cần render không thay đổi, có thể truyền một mảng phụ thuộc rỗng để dữ liệu được lấy sau lần render đầu tiên. 
+Khi nhận được phản hồi từ server, chúng ta có thể sử dụng state setter từ state hook để lữu trữ dữ liệu từ phản hồi của server vào trạng thái component cục bộ cho các lần render sau
+Việc sử dụng kết hợp State Hook và Effect Hook là một mô hình mạnh mẽ giúp các component tránh khỏi việc lấy dữ liệu mới không cần thiết sau mỗi lần render
+- Một mảng phụ thuộc rỗng báo hiệu cho Effect Hook rằng effect của chúng ta không bao giờ cần chạy lại, rằng nó không phụ thuộc vào bất cứ thứ gì
+Chỉ định không phụ thuộc nghĩa là kết quả của việc chạy effect đó sẽ không thay đổi và việc gọi effect 1 lần là đủ
+- Một mảng phụ thuộc không rỗng sẽ báo hiệu cho Effect Hook rằng nó có thể bỏ qua việc gọi hiệu ứng của chúng ta sau khi render lại, trừ khi giá trị của một trong các biến trong mảng phụ thuộc đã thay đổi.
+Nếu giá trị của một phụ thuộc đã thay đổi, Effect Hook sẽ gọi lại effect
+- Ví dụ:
+useEffect(() => {
+  document.title = `You clicked ${count} times`;
+}, [count]); // Only re-run the effect if the value stored by count changes
