@@ -1,0 +1,34 @@
+# Hooks riêng biệt cho Effects riêng biệt:
+- Khi có nhiều giá trị liên quan chặt chẽ và thay đổi cùng lúc, việc nhóm các giá trị vào một tập hợp như một đối tượng hoặc mảng có thể là hợp lí
+- Việc đóng gói dữ liệu lại với nhau cũng có thể làm tăng độ phức tạp cho mã chịu trách nhiệm quản lý dữ liệu đó.
+- Do đó, nên phân tách các mối quan tâm bằng cách quản lí các dữ liệu khác nhau nhau với các Hooks khác nhau
+- Ví dụ: Dữ liệu gói gọn thành một đối tượng duy nhất nên khá phức tạp:
+// Handle both position and menuItems with one useEffect hook.
+const [data, setData] = useState({ position: { x: 0, y: 0 } });
+useEffect(() => {
+  get('/menu').then((response) => {
+    setData((prev) => ({ ...prev, menuItems: response.data }));
+  });
+  const handleMove = (event) =>
+    setData((prev) => ({
+      ...prev,
+      position: { x: event.clientX, y: event.clientY }
+    }));
+  window.addEventListener('mousemove', handleMove);
+  return () => window.removeEventListener('mousemove', handleMove);
+}, []);
+- Để đơn giản hơn, tách riêng:
+// Handle menuItems with one useEffect hook.
+const [menuItems, setMenuItems] = useState(null);
+useEffect(() => {
+  get('/menu').then((response) => setMenuItems(response.data));
+}, []);
+
+// Handle position with a separate useEffect hook.
+const [position, setPosition] = useState({ x: 0, y: 0 });
+useEffect(() => {
+  const handleMove = (event) =>
+    setPosition({ x: event.clientX, y: event.clientY });
+  window.addEventListener('mousemove', handleMove);
+  return () => window.removeEventListener('mousemove', handleMove);
+}, []);
