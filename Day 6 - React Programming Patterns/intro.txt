@@ -1,0 +1,5 @@
+# Tách các container component khỏi presentational component
+- Trong quá trình xây dựng app React, một component có thể có quá nhiều trách nhiệm và khó bảo trì
+- Nếu một component phải có state, thực hiện phép tính dựa trên props hoặc quản lí logic phức tạp thì component đó không cần thiết phải render JSX
+- Để giảm độ phức tạp, chúng ta chia nhỏ thành nhiều component đơn giản hơn
+- Ở bài này, tập trung vào việc phân chia các component phức tạp thành các component có trạng thái (container) và không trạng thái (presentational), trong đó các component có trạng thái quản lí trạng thái hoặc logic phức tạp và các thành phần không trạng thái chỉ hiển thị JSX
