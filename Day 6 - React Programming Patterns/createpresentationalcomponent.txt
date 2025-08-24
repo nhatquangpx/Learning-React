@@ -1,0 +1,16 @@
+# Tạo presentational component:
+- Sau khi đã tách container component, có thể tạo presentational component để hiển thị 
+- Nhiệm vụ duy nhất của presentational component là chứa JSX
+- Nó phải là một component được xuất ra và không được tự hiển thị vì presentational component sẽ luôn được hiển thị bởi component Container
+- Ví dụ: Giả sử có các component được gọi là Presentational và Container. Presentational.js phải xuất function component (hoặc class nếu có):
+function Presentational(/*...props*/) {
+  // body of the component						
+}
+                        
+export default Presentational;
+Container.js phải import component đó:
+import { Presentational } from 'Presentational.js';
+function Container() {
+  // renders Presentational component
+}
+-> Mặc dù một presentational component không duy trì state, nhưng điều đó không có nghĩa là nó không phản ứng. Giống như state, một thay đổi trong props cũng kích hoạt một thay đổi tiềm ẩn trong JSX được render
