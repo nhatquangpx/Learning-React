@@ -1,0 +1,6 @@
+# Styling trong React app
+- Styling là khía cạnh quan trọng của bất kỳ ứng dụng React nào vì nó có thể ảnh hưởng đến UX và giúp tạo bản sắc riêng biệt cho ứng dụng
+- Khi ứng dụng ngày càng phức tạp, cách styling cũng quan trọng hơn. Điều cần thiết là chọn đúng phương pháp để giữ cho các định dạng được tổ chức và dễ quản lí
+- Trong bài học này, chúng ta sẽ tìm hiểu những kiến thức cơ bản về styling, bao gồm các phương pháp và kỹ thuật khác nhau mà bạn có thể sử dụng.
+Chúng ta sẽ bắt đầu bằng việc thảo luận về định dạng biến inline và biến object, đông thời giải thích quy tắc cú pháp độc đáo dành riêng cho React
+Tiếp theo đi sâu vào các module CSS và hướng dẫn cách sử dụng chúng để tạo kiểu dạng module và có thể tái sử dụng

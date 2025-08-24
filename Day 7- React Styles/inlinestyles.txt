@@ -1,0 +1,13 @@
+# Inline stylé và Style Object Variables:
+- Có nhiều cách để sử dụng styles trong React. Ở đây tập trung vào 2 cách: inline styles và style object variables 
+- Một inline style là style được viết như một attribute. Ví dụ:
+<h1 style={{ color: 'red' }}>Hello world</h1>
+- Lưu ý: Có cặp ngoặc nhọn kép {{...}}. Dấu ngoặc nhọn bên ngoài cho biết đây là JS. Dấu ngoặc nhọn bên trong tạo ra một object JS theo nghĩa đen
+-> Nếu muốn áp dụng nhiều hơn một vài kiểu, sẽ gây lộn xộn
+-> Giải pháp: Lưu trữ một style object trong 1 biến và chèn biến đó làm giá trị của attribute style
+- Ví dụ:
+const darkMode = {
+  color: 'white',
+  background: 'black'
+};
+<h1 style={darkMode}>Hello world</h1>
