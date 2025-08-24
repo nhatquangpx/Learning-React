@@ -1,0 +1,38 @@
+# Giao tiếp giữa Parent/Child và Sibling/Sibling:
+- Các container component giao tiếp với các presentational component bằng cách truyền trạng thái của chúng qua props, nhưng các presentational component truyền đạt những thay đổi đến container như thế nào?
+- Có ý tưởng cập nhật trực tiếp như sau:
+function Presentational(props) {
+  const buttonClickHandler = () => {
+    props.isActive = !props.isActive
+  }
+  // rest of code
+}
+-> Không đúng vì các component không bao giờ được phép cập nhạt trực tiếp prop của chúng
+Các function component của React phải là các hàm thuần túy, việc cập nhật trực tiếp giá trị prop sẽ vi phạm nguyên tắc đó
+- Để presentational component truyển đạt những thay đổi tới một container component, container component phải xác định và cung cấp một cách để presentational component có thể truyền đạt bằng cách sử dụng một hàm xử lý thay đổi được truyền dưới dạng một thuộc tính
+- Ví dụ:
+function Container() {
+  const [isActive, setIsActive] = useState(false);								
+                                
+  return (
+    <>
+      <Presentational active={isActive} toggle={setIsActive}/>
+      <OtherPresentational active={isActive}/>
+    </>
+    );							
+  }
+                        
+function Presentational(props) {
+  return (
+    <h1>Engines are {props.active}</h1>
+    <button onClick={() => props.toggle(!props.active)}>Engine Toggle</button>
+  );
+}
+                            
+function OtherPresentational(props) {
+  // render...
+}
+-> Trong ví dụ trên, Container duy trì trạng thái isActive và truyền setIsActive thông qua prop toggle
+Khi Presentational cần truyền đạt thay đổi đến prop active, nó sử dụng hàm được truyền đến nó thông qua prop toggle
+- Việc sử dụng pattern này cũng gián tiếp dẫn đến giao tiếp giữa các sibling component (các component cón chung component cha), như được thể hiện trong ví dụ trên.
+Khi Presentational giao tiếp một thay đổi thông qua toggle, nó gây ra cập nhật trạng thái trong Container, cung cấp giá trị cập nhật cho isActive cả 2 component Presentational và OtherPresentational thông qua prop active
