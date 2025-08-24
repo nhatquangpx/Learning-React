@@ -1,0 +1,15 @@
+# Multiple stylesheets
+- Mặc dù inline styles và style object variables là những phương pháp style hợp lệ trong React, việc theo dõi các style được áp dụng khi phát triển app có thể trở nên khó khăn về mặt tổ chức
+- 1 cách khác để tạo style dạng module, có tổ chức và có thể tái sử dụng là tạo stylesheets riêng cho từng component
+- Ta có thể import 1 stylesheet bằng cú pháp:
+    import './App.css'
+- Tuy nhiên nếu có nhiều stylesheets có cùng tên class, tên có thể xung đột và tạo ra xung đột về styles
+-> Sử dụng module CSS. Bằng cách import chúng như 1 module, styles này chỉ hợp lệ với component đã import nó. Việc này được thực hiện tự động bằng cách tạo ra các tên class duy nhất cho mỗi module. Điều này giúp ta không phải theo dõi tên các class đã sử dụng trên stylesheet
+- Để sử dụng module CSS, ta bắt đầu bằng việc đặt tên stylesheet theo định dạng sau, trong đó fileName cần được thay bằng tên của component được styling:
+    fileName.module.css
+Điều này cho biết file này sẽ được xử lý như 1 module CSS
+Sau đó, nó phải được import vào file chứa component:
+    import styles from './fileName.module.css'
+Từ lệnh import này, chúng ta có thể thấy style object hiện chứa các class selector của fileName.module.css. Để truy cập các selector, sử dụng ký hiệu dấu chấm:
+    <div className={styles.divStyle}></div>
+- Lưu ý: Áp dụng style bằng cách sử dụng thuộc tính className thay vì class. Vì class là từ khóa dành riêng của JS, do đó React sử dụng className để tránh xung đột
