@@ -1,0 +1,13 @@
+# Cú pháp Style:
+- Giống như cách tham chiếu các thuộc tính CSS trong style object của DOM trong JS, ta viết tên thuộc tính CSS bằng camelCase
+Ví dụ:
+const styles = {
+  marginTop: '20px',
+  backgroundColor: 'green'
+};
+-> Chú ý không viết dùng dấu gạch nối (ví dụ: background-color) vì dấu - là toán tử dành riêng trong JS
+- Trong JS, giá trị hầu như luôn là chuỗi. Ngay cả khi giá trị là kiểu số, thường phải viết dưới dạng chuỗi để có thể chỉ định đơn vị.
+Ví dụ: '450px' hoặc '20%'
+- Nếu viết giá trị dưới dạng số, đơn vị px được mặc định. Ví dụ:
+{fontSize: 30 } -> Mặc định là 30px
+- Có vài styles đặc biệt không tự động fill px cho mình. Tuy nhiên những style này hầu như không bao giờ dùng px nên không cần lo
