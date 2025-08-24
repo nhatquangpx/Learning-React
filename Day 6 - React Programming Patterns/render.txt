@@ -1,0 +1,3 @@
+# Render presentational component trong container component:
+- Container component bây giờ sẽ hiển thị các presentational component thay vì hiển thị JSX.
+- State của container component sẽ được truyền xuống dưới dạng props vào các presentational component để giữ cho chúng phản ứng 
