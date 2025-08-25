@@ -1,0 +1,6 @@
+# React Forms:
+- Về cách biểu mẫu hoạt động trong một môi trường điển hình, không phải React:
+Người dùng nhập dữ liệu vào các trường input của form, server không hề biết. Server vẫn sẽ không biết gì cho đến khi người dùng nhấn submit, nút này sẽ gửi tất cả dữ liệu của form đến server cùng một lúc
+- Trong React, cũng như nhiều môi trường JS khác, đây không phải cách thực hiện tốt nhất.
+- Vấn đề nằm ở khoảng thời gian mà form nghĩ rằng người dùng đã nhập một nội dung, nhưng server lại nghĩ rằng người dùng đã nhập một nội dung khác. Điều gì sẽ xảy ra nếu trong khoảng tgian đó, một bên thứ 3 của trang web cần biết người dùng đã nhập gì? Bên t3 có thể hỏi form hoặc server và nhận được 2 câu trả lời khác nhau. Trong một app JS phức tạp với nhiều phần chuyển động và phụ thuộc lẫn nhau, loại conflict này có thể dẫn đến bug
+- Trong React form, bạn muốn server biết về mọi ký tự mới hoặc xóa ngay khi chúng xảy ra. Bằng cách đó, màn hình của bạn sẽ luôn đồng bộ với phần còn lại của ứng dụng
